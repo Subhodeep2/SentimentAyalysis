@@ -5,7 +5,8 @@ pandas==1.1.5
 seaborn==0.12.2
 streamlit==1.18.1
 urlextract==1.8.0
-wordcloud==1.8.2.2
+Pillow>=8.3.1
+wordcloud>=1.8.1
 jupyter==1.0.0
 ipywidgets==7.6.3
 gunicorn==20.1.0
