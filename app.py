@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr  7 10:58:35 2023
+
+@author: user
+"""
+import preprocessor
+import helper
 
 # Importing modules
 import nltk
@@ -14,6 +22,19 @@ stop_words_file = 'stop_hinglish.txt'
 nltk.download('stopwords')
 import nltk
 nltk.download('vader_lexicon')
+
+import subprocess
+
+# Check if the 'wordcloud' package is installed
+try:
+    import wordcloud
+except ImportError:
+    # If 'wordcloud' package is not installed, install it
+    subprocess.check_call(["pip", "install", "wordcloud"])
+
+# Now you can import the 'wordcloud' package
+import wordcloud
+
 #Displaying the entire data frame
 
 # App title
@@ -632,5 +653,4 @@ if uploaded_file is not None:
                     st.markdown(f"<h2 style='text-align: center;'>Average Neutral Score: {avg_neutral:.2f}</h2>", unsafe_allow_html=True)
                     st.markdown(f"<h2 style='text-align: center;'>Average Negative Score: {avg_negative:.2f}</h2>", unsafe_allow_html=True)
                 #-----------------------
-
 
