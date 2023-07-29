@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr  7 11:06:07 2023
+
+@author: user
+"""
+
+# Importing modules
 import streamlit as st
 from urlextract import URLExtract
 from wordcloud import WordCloud
@@ -14,6 +22,18 @@ nltk.download('stopwords')
 nltk.download('vader_lexicon')
 # Object
 extract = URLExtract()
+
+import subprocess
+
+# Check if the 'wordcloud' package is installed
+try:
+    import wordcloud
+except ImportError:
+    # If 'wordcloud' package is not installed, install it
+    subprocess.check_call(["pip", "install", "wordcloud"])
+
+# Now you can import the 'wordcloud' package
+import wordcloud
 
 # -1 => Negative
 # 0 => Neutral
