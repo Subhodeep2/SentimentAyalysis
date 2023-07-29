@@ -1,10 +1,17 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Apr  7 11:04:24 2023
+
+@author: user
+"""
+
+# Importing modules
 import re
 import pandas as pd
 import nltk
 nltk.download('averaged_perceptron_tagger')
 nltk.download('vader_lexicon')
 from nltk.sentiment import SentimentIntensityAnalyzer
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from tqdm.notebook import tqdm
 nltk.download('stopwords')
 sia = SentimentIntensityAnalyzer()
@@ -107,7 +114,7 @@ def preprocess(data):
 
 #----------------------------------------------------------------------------------------
 def preprocess2(data):
-
+    
     # Regular expression
     pattern = '\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s-\s'
     
@@ -174,4 +181,7 @@ def preprocess2(data):
     avg_negative = merged_df['neg'].mean()
 
     return merged_df, avg_compound, avg_positive, avg_neutral, avg_negative
+    
+
+
     
