@@ -654,3 +654,37 @@ if uploaded_file is not None:
                     st.markdown(f"<h2 style='text-align: center;'>Average Negative Score: {avg_negative:.2f}</h2>", unsafe_allow_html=True)
                 #-----------------------
 
+def main():
+    
+    # File Uploader in the sidebar
+    uploaded_file = st.sidebar.file_uploader("Upload exported chat to check sentiment distribution", type=["txt"])
+    
+    if uploaded_file is not None:
+        # Read the uploaded file as text
+        data = uploaded_file.read().decode("utf-8")
+        
+        # Perform preprocessing and sentiment analysis
+        _, avg_compound, avg_positive, avg_neutral, avg_negative = preprocessor.preprocess2(data)
+        
+        # Display pie chart of overall sentiment analysis
+        show_sentiment_pie_chart(avg_positive, avg_neutral, avg_negative)
+
+def show_sentiment_pie_chart(avg_positive, avg_neutral, avg_negative):
+    # Create a DataFrame with the average scores
+    average_scores = pd.DataFrame({
+        'Sentiment': ['Positive', 'Neutral', 'Negative'],
+        'Score': [avg_positive, avg_neutral, avg_negative]
+    })
+    
+    # Increase the explosion value to explode the pie chart a little bit
+    explode = (0.3, 0.3, 0.3)  # Tuple of three values corresponding to each slice
+    # Plot the pie chart
+    fig, ax = plt.subplots()
+    ax.pie(average_scores['Score'], labels=average_scores['Sentiment'], autopct='%1.1f%%', startangle=90, explode=explode)
+    ax.axis('equal')
+    st.pyplot(fig)
+
+if __name__ == "__main__":
+    main()
+
+
