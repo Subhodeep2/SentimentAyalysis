@@ -677,7 +677,9 @@ def show_sentiment_pie_chart(avg_positive, avg_neutral, avg_negative):
     })
     
     # Increase the explosion value to explode the pie chart a little bit
-    explode = (0.3, 0.3, 0.3)  # Tuple of three values corresponding to each slice
+    explode = (0.2, 0.2, 0.0)  # Tuple of three values corresponding to each slice
+
+    st.markdown("<h3 style='text-align: center; color: black;'>Pie Chart for Overall Sentiment Distribution</h3>",unsafe_allow_html=True)
     # Plot the pie chart
     fig, ax = plt.subplots()
     ax.pie(average_scores['Score'], labels=average_scores['Sentiment'], autopct='%1.1f%%', startangle=90, explode=explode)
